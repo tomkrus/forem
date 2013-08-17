@@ -20,7 +20,7 @@ Forem::Engine.routes.draw do
   # Moderation of a single topic
   put 'forums/:forum_id/topics/:topic_id/moderate', :to => "moderation#topic", :as => :moderate_forum_topic
 
-  resources :categories, :only => [:index, :show]
+  resources :categories, :as => "/dzial", :only => [:index, :show]
 
   namespace :admin do
     root :to => "base#index"
