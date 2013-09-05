@@ -14,7 +14,7 @@ module Forem
     has_many :moderators, :through => :moderator_groups, :source => :group
     has_many :moderator_groups
 
-    validates :category, :name, :description, :presence => true
+    validates :category, :name, :slug, :description, :presence => true
 
     attr_accessible :category_id, :title, :name, :description, :moderator_ids
 
