@@ -35,6 +35,15 @@ module Forem
     after_save   :approve_user_and_posts, :if => :approved?
     after_create :subscribe_poster
     after_create :skip_pending_review, :unless => :moderated?
+    
+    after_create :user_topics
+    after_destroy :user_topics
+
+    def user_topics
+      a = User.where(id: self.user_id).first
+      c = Topic.where(user_id: a).count
+      a.update_attributes(topics_count: c)
+    end
 
     class << self
       def visible
