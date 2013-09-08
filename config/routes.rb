@@ -1,7 +1,7 @@
 Forem::Engine.routes.draw do
   root :to => "forums#index"
 
-  resources :forums, :only => [:index, :show] do
+  resources :forums, :path => "tematyka" do
     resources :topics do
       member do
         get :subscribe
@@ -20,7 +20,7 @@ Forem::Engine.routes.draw do
   # Moderation of a single topic
   put 'forums/:forum_id/topics/:topic_id/moderate', :to => "moderation#topic", :as => :moderate_forum_topic
 
-  resources :categories, :as => "/dzial", :only => [:index, :show]
+  resources :categories, :path => "/dzial"
 
   namespace :admin do
     root :to => "base#index"
