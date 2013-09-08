@@ -53,7 +53,7 @@ module Forem
     end
 
     def autocomplete_field
-      @@autocomplete_field || "email"
+      @@autocomplete_field || "login"
     end
 
     def per_page
