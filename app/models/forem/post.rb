@@ -36,6 +36,15 @@ module Forem
     after_save :approve_user,   :if => :approved?
     after_save :blacklist_user, :if => :spam?
     after_save :email_topic_subscribers, :if => Proc.new { |p| p.approved? && !p.notified? }
+    
+    after_create :user_posts
+    after_destroy :user_posts
+
+    def user_posts
+      a = User.where(id: self.user_id).first
+      c = Post.where(user_id: a).count
+      a.update_attributes(posts_count: c)
+    end
 
     class << self
       def approved
