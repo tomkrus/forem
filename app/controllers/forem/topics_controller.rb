@@ -30,7 +30,7 @@ module Forem
     end
 
     def destroy
-      @topic = @forum.topics.friendly.find(params[:id])
+      @topic = @forum.topics.find(params[:id])
       if forem_user == @topic.user || forem_user.forem_admin?
         @topic.destroy
         destroy_successful
@@ -92,7 +92,7 @@ module Forem
 
     private
     def find_forum
-      @forum = Forem::Forum.friendly.find(params[:forum_id])
+      @forum = Forem::Forum.find(params[:forum_id])
       authorize! :read, @forum
     end
 
@@ -106,7 +106,7 @@ module Forem
 
     def find_topic
       begin
-        @topic = forum_topics(@forum, forem_user).friendly.find(params[:id])
+        @topic = forum_topics(@forum, forem_user).find(params[:id])
         authorize! :read, @topic
       rescue ActiveRecord::RecordNotFound
         flash.alert = t("forem.topic.not_found")
