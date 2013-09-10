@@ -29,7 +29,7 @@ module Forem
     private
 
     def forum
-      @forum = Forem::Forum.friendly.find(params[:forum_id])
+      @forum = Forem::Forum.find(params[:forum_id])
     end
 
     helper_method :forum
