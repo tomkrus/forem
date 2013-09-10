@@ -39,7 +39,7 @@ module Forem
       end
 
       def find_category
-        @category = Forem::Category.friendly.find(params[:id])
+        @category = Forem::Category.find(params[:id])
       end
 
       def create_successful
