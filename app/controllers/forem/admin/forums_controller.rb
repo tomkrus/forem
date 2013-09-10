@@ -40,7 +40,7 @@ module Forem
       end
 
       def find_forum
-        @forum = Forem::Forum.friendly.find(params[:id])
+        @forum = Forem::Forum.find(params[:id])
       end
 
       def create_successful
