@@ -96,7 +96,7 @@ module Forem
     end
 
     def find_topic
-      @topic = Forem::Topic.friendly.find params[:topic_id]
+      @topic = Forem::Topic.find params[:topic_id]
     end
 
     def find_post_for_topic
