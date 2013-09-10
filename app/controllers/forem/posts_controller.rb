@@ -8,7 +8,11 @@ module Forem
     before_filter :authorize_edit_post_for_forum!, :only => [:edit, :update]
     before_filter :find_post_for_topic, :only => [:edit, :update, :destroy]
     before_filter :ensure_post_ownership!, :only => [:destroy]
-
+    
+    def show
+      @post = Post.find(params[:id])
+    end
+    
     def new
       @post = @topic.posts.build
       find_reply_to_post
