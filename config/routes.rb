@@ -36,7 +36,9 @@ Forem::Engine.routes.draw do
       resources :moderators
     end
 
-    resources :categories
+    resources :categories do
+      collection { post :sort }
+    end
     resources :topics do
       member do
         put :toggle_hide
