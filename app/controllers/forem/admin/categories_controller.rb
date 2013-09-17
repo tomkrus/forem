@@ -31,6 +31,13 @@ module Forem
         @category.destroy
         destroy_successful
       end
+      
+      def sort
+        params[:category].each_with_index do |id, index|
+          Forem::Category.update_all({position: index+1}, {id: id})
+        end
+        render nothing: true
+      end
 
       private
 
