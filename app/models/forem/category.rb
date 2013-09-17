@@ -11,6 +11,8 @@ module Forem
     def to_s
       name
     end
+    
+    acts_as_list scope: :position
 
   end
 end
