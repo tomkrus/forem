@@ -13,6 +13,5 @@ module Forem
     end
     
     acts_as_list scope: :position
-
   end
 end
